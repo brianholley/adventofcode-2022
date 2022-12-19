@@ -1,8 +1,10 @@
 import Day1 from "./day1";
+import Day2 from "./day2";
 
 const days = [
     null,
     new Day1(),
+    new Day2(),
 ];
 
 const usage = () => {
