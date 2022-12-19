@@ -1,7 +1,7 @@
 import Day from './day';
 import { ArrayUtils, StdinReader } from './helpers';
 
-export default class DayN implements Day {
+export default class Day1 implements Day {
     async part1() {
         const reader = new StdinReader();
 
