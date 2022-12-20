@@ -51,6 +51,14 @@ export class StdinReader {
 }
 
 export class ArrayUtils {
+    static new2dArray<T>(rows: number, cols: number, defaultValue: T) {
+        let arr: T[][] = new Array(rows);
+        for (let r=0; r < arr.length; r++) {
+            arr[r] = new Array(cols).fill(defaultValue);
+        }
+        return arr;
+    }
+
     static sum(arr: number[]) {
         return arr.reduce((prev, curr) => prev + curr, 0);
     }
