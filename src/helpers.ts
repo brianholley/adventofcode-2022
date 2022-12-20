@@ -52,6 +52,6 @@ export class StdinReader {
 
 export class ArrayUtils {
     static sum(arr: number[]) {
-        return arr.reduce((prev, curr) => prev + curr);
+        return arr.reduce((prev, curr) => prev + curr, 0);
     }
 }
