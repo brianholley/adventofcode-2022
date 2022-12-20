@@ -4,6 +4,7 @@ import Day3 from "./day3";
 import Day4 from "./day4";
 import Day5 from "./day5";
 import Day6 from "./day6";
+import Day7 from "./day7";
 
 const days = [
     null,
@@ -13,6 +14,7 @@ const days = [
     new Day4(),
     new Day5(),
     new Day6(),
+    new Day7(),
 ];
 
 const usage = () => {
