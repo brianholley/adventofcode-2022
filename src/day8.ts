@@ -6,7 +6,6 @@ export default class Day8 implements Day {
         const reader = new StdinReader();
 
         let grid = await reader.read2dArray();
-
         let visibility = ArrayUtils.new2dArray<number>(grid.length, grid[0].length, 0);
 
         // Rows
@@ -27,10 +26,10 @@ export default class Day8 implements Day {
             }
         }
         // Cols
-        for (let c=0; c < grid.length; c++) {
-            let i = { top: 0, bottom: grid.length-1};
+        for (let c=0; c < grid[0].length; c++) {
+            let i = { top: 0, bottom: grid[0].length-1};
             let h = { top: -1, bottom: -1 };
-            while (i.top < grid.length && i.bottom >= 0 && (h.top < 9 || h.bottom < 9)) {
+            while (i.top < grid[0].length && i.bottom >= 0 && (h.top < 9 || h.bottom < 9)) {
                 if (grid[i.top][c] > h.top) {
                     visibility[i.top][c] = 1;
                     h.top = grid[i.top][c];
@@ -51,8 +50,47 @@ export default class Day8 implements Day {
     async part2() {
         const reader = new StdinReader();
 
-        let line: string;
-        while (line = await reader.read()) {
+        let grid = await reader.read2dArray();
+
+        const treeScore = (grid: number[][], row: number, col: number): number => {
+            let scores = [];
+            let h = grid[row][col];
+
+            // Up
+            let r = row-1;
+            for (; r > 0 && grid[r][col] < h; r--) {
+            }
+            scores.push(row - r);
+
+            // Down
+            r = row+1;
+            for (; r < grid.length - 1 && grid[r][col] < h; r++) {
+            }
+            scores.push(r - row);
+
+            // Left
+            let c = col-1;
+            for (; c > 0 && grid[row][c] < h; c--) {
+            }
+            scores.push(col - c);
+
+            // Right
+            c = col+1;
+            for (; c < grid[row].length - 1 && grid[row][c] < h; c++) {
+            }
+            scores.push(c - col);
+
+            // console.log(scores);
+            return scores.reduce((prev, curr) => prev * curr, 1);
+        };
+
+        let maxScore = 0;
+        for (let r=1; r < grid.length - 1; r++) {
+            for (let c=1; c < grid[r].length - 1; c++) {
+                maxScore = Math.max(maxScore, treeScore(grid, r, c));
+            }
         }
+
+        console.log(maxScore);
     }
 };
