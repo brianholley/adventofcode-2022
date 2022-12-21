@@ -1,4 +1,5 @@
 import Day1 from "./day1";
+import Day10 from "./day10";
 import Day2 from "./day2";
 import Day3 from "./day3";
 import Day4 from "./day4";
@@ -19,6 +20,7 @@ const days = [
     new Day7(),
     new Day8(),
     new Day9(),
+    new Day10(),
 ];
 
 const usage = () => {
